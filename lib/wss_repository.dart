@@ -50,6 +50,23 @@ export '/repositories/statistic_repository.dart'
     show IStatisticRepository
     hide StatisticRepository;
 
+export '/requests/get_category_param.dart' show GetCategoryParam;
+export '/requests/get_combo_param.dart' show GetComboParam;
+export '/requests/get_day_off_param.dart' show GetDayOffParam;
+export '/requests/get_feedback_group_param.dart'
+    show GetFeedbackGroupByRatingParam;
+export '/requests/get_feedback_param.dart' show GetFeedbackParam;
+export '/requests/get_service_param.dart' show GetServiceParam;
+export '/requests/get_task_param.dart' show GetTaskParam;
+export '/requests/get_task_count_param.dart' show GetStatisticTaskCountParam;
+export '/requests/post_day_off_body.dart' show PostDayOffBody;
+export '/requests/post_service_body.dart' show PostServiceBody;
+export '/requests/put_day_off_body.dart' show PutDayOffBody;
+export '/requests/put_service_body.dart' show PutServiceBody;
+export '/requests/put_service_status_body.dart' show PutServiceStatusBody;
+export '/requests/put_task_body.dart' show PutTaskBody;
+export '/requests/update_profile_body.dart' show UpdateProfileBody;
+
 class WssRepository {
   static String get tag => 'WssRepository';
 
