@@ -161,7 +161,7 @@ class Service {
       name: map['name'] != null ? map['name'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       serviceImages: map['serviceImages'] != null
-          ? (map['serviceImages'] as List<String>).map((e) => e).toList()
+          ? (map['serviceImages'] as List).map((e) => e as String).toList()
           : null,
       categoryId:
           map['categoryId'] != null ? map['categoryId'] as String : null,
