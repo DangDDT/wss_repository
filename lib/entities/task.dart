@@ -90,7 +90,7 @@ class OrderDetail {
   final String? address;
   final DateTime? startTime;
   final DateTime? endTime;
-  final int? price;
+  final num? price;
   final String? description;
   final String? status;
   final Service? service;
@@ -120,7 +120,7 @@ class OrderDetail {
       endTime: map['endTime'] != null
           ? DateTime.parse(map['endTime'] as String)
           : null,
-      price: map['price'] != null ? map['price'] as int : null,
+      price: map['price'] != null ? map['price'] as num : null,
       description:
           map['description'] != null ? map['description'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
