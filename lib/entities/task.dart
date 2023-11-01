@@ -140,7 +140,7 @@ class Service {
   final String? categoryId;
   final String? status;
   final int? used;
-  final int? rating;
+  final num? rating;
 
   Service({
     this.id,
@@ -167,7 +167,7 @@ class Service {
           map['categoryId'] != null ? map['categoryId'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
       used: map['used'] != null ? map['used'] as int : null,
-      rating: map['rating'] != null ? map['rating'] as int : null,
+      rating: map['rating'] != null ? map['rating'] as num : null,
     );
   }
 }
