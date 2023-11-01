@@ -136,7 +136,7 @@ class Service {
   final String? code;
   final String? name;
   final int? quantity;
-  final List<dynamic>? serviceImages;
+  final List<String>? serviceImages;
   final String? categoryId;
   final String? status;
   final int? used;
@@ -161,7 +161,7 @@ class Service {
       name: map['name'] != null ? map['name'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       serviceImages: map['serviceImages'] != null
-          ? (map['serviceImages'] as List).map((e) => e).toList()
+          ? (map['serviceImages'] as List<String>).map((e) => e).toList()
           : null,
       categoryId:
           map['categoryId'] != null ? map['categoryId'] as String : null,
