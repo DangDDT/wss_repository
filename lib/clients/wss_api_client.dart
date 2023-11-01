@@ -98,6 +98,9 @@ abstract class WssApiClient {
   @GET("/Task")
   Future getTasks(@Queries() GetTaskParam param);
 
+  @GET("/Task/{id}")
+  Future getTask(@Path('id') String id);
+
   @PUT("/Task/{id}")
   Future putTask(@Path('id') String id, @Body() PutTaskBody body);
 
