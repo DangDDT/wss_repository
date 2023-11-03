@@ -16,13 +16,13 @@ abstract class GetParam {
 
   Map<String, dynamic> toMap() {
     if (sortKey != null) {
-      if (!sortKeySelection.contains(sortKey) == false) {
+      if (!sortKeySelection.contains(sortKey)) {
         throw ArgumentError(
             'sortKey must be one of ${sortKeySelection.join(', ')}');
       }
     }
     if (sortOrder != null) {
-      if (!sortOrderSelection.contains(sortOrder) == false) {
+      if (!sortOrderSelection.contains(sortOrder)) {
         throw ArgumentError(
             'sortOrder must be one of ${sortOrderSelection.join(', ')}');
       }
