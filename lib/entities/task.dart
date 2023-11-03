@@ -3,14 +3,14 @@
 class Task {
   final String? id;
   final String? code;
-  final Partner? partner;
-  final Service? service;
-  final OrderDetail? orderDetail;
+  final _Partner? partner;
+  final _Service? service;
+  final _OrderDetail? orderDetail;
   final String? taskName;
   final DateTime? startDate;
   final DateTime? endDate;
   final String? status;
-  final List<Comment>? comments;
+  final List<_Comment>? comments;
 
   Task({
     this.id,
@@ -30,13 +30,13 @@ class Task {
       id: map['id'] != null ? map['id'] as String : null,
       code: map['code'] != null ? map['code'] as String : null,
       partner: map['partner'] != null
-          ? Partner.fromMap(map['partner'] as Map<String, dynamic>)
+          ? _Partner.fromMap(map['partner'] as Map<String, dynamic>)
           : null,
       service: map['service'] != null
-          ? Service.fromMap(map['service'] as Map<String, dynamic>)
+          ? _Service.fromMap(map['service'] as Map<String, dynamic>)
           : null,
       orderDetail: map['orderDetail'] != null
-          ? OrderDetail.fromMap(map['orderDetail'] as Map<String, dynamic>)
+          ? _OrderDetail.fromMap(map['orderDetail'] as Map<String, dynamic>)
           : null,
       taskName: map['taskName'] != null ? map['taskName'] as String : null,
       startDate: map['startDate'] != null
@@ -48,21 +48,21 @@ class Task {
       status: map['status'] != null ? map['status'] as String : null,
       comments: map['comments'] != null
           ? (map['comments'] as List)
-              .map((e) => Comment.fromMap(e as Map<String, dynamic>))
+              .map((e) => _Comment.fromMap(e as Map<String, dynamic>))
               .toList()
           : null,
     );
   }
 }
 
-class Comment {
+class _Comment {
   final String? id;
   final String? taskId;
   final String? content;
   final DateTime? createDate;
   final String? createBy;
 
-  Comment({
+  _Comment({
     this.id,
     this.taskId,
     this.content,
@@ -70,8 +70,8 @@ class Comment {
     this.createBy,
   });
 
-  factory Comment.fromMap(Map<String, dynamic> map) {
-    return Comment(
+  factory _Comment.fromMap(Map<String, dynamic> map) {
+    return _Comment(
       id: map['id'] != null ? map['id'] as String : null,
       taskId: map['taskId'] != null ? map['taskId'] as String : null,
       content: map['content'] != null ? map['content'] as String : null,
@@ -83,7 +83,7 @@ class Comment {
   }
 }
 
-class OrderDetail {
+class _OrderDetail {
   final String? id;
   final String? orderId;
   final String? serviceId;
@@ -93,9 +93,9 @@ class OrderDetail {
   final num? price;
   final String? description;
   final String? status;
-  final Service? service;
+  final _Service? service;
 
-  OrderDetail({
+  _OrderDetail({
     this.id,
     this.orderId,
     this.serviceId,
@@ -108,8 +108,8 @@ class OrderDetail {
     this.service,
   });
 
-  factory OrderDetail.fromMap(Map<String, dynamic> map) {
-    return OrderDetail(
+  factory _OrderDetail.fromMap(Map<String, dynamic> map) {
+    return _OrderDetail(
       id: map['id'] != null ? map['id'] as String : null,
       orderId: map['orderId'] != null ? map['orderId'] as String : null,
       serviceId: map['serviceId'] != null ? map['serviceId'] as String : null,
@@ -125,13 +125,13 @@ class OrderDetail {
           map['description'] != null ? map['description'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
       service: map['service'] != null
-          ? Service.fromMap(map['service'] as Map<String, dynamic>)
+          ? _Service.fromMap(map['service'] as Map<String, dynamic>)
           : null,
     );
   }
 }
 
-class Service {
+class _Service {
   final String? id;
   final String? code;
   final String? name;
@@ -142,7 +142,7 @@ class Service {
   final int? used;
   final num? rating;
 
-  Service({
+  _Service({
     this.id,
     this.code,
     this.name,
@@ -154,8 +154,8 @@ class Service {
     this.rating,
   });
 
-  factory Service.fromMap(Map<String, dynamic> map) {
-    return Service(
+  factory _Service.fromMap(Map<String, dynamic> map) {
+    return _Service(
       id: map['id'] != null ? map['id'] as String : null,
       code: map['code'] != null ? map['code'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
@@ -172,7 +172,7 @@ class Service {
   }
 }
 
-class Partner {
+class _Partner {
   final String? fullname;
   final DateTime? dateOfBirth;
   final String? phone;
@@ -181,7 +181,7 @@ class Partner {
   final String? categoryId;
   final String? gender;
 
-  Partner({
+  _Partner({
     this.fullname,
     this.dateOfBirth,
     this.phone,
@@ -191,8 +191,8 @@ class Partner {
     this.gender,
   });
 
-  factory Partner.fromMap(Map<String, dynamic> map) {
-    return Partner(
+  factory _Partner.fromMap(Map<String, dynamic> map) {
+    return _Partner(
       fullname: map['fullname'] != null ? map['fullname'] as String : null,
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'] as String)

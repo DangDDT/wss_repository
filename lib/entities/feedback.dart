@@ -7,8 +7,8 @@ class Feedback {
   final String? content;
   final DateTime? createDate;
   final int? rating;
-  final Service? service;
-  final User? user;
+  final _Service? service;
+  final _User? user;
   final String? status;
 
   Feedback({
@@ -29,17 +29,17 @@ class Feedback {
           map['createDate'] != null ? DateTime.parse(map['createDate']) : null,
       rating: map['rating'] != null ? map['rating'] as int : null,
       service: map['service'] != null
-          ? Service.fromMap(map['service'] as Map<String, dynamic>)
+          ? _Service.fromMap(map['service'] as Map<String, dynamic>)
           : null,
       user: map['user'] != null
-          ? User.fromMap(map['user'] as Map<String, dynamic>)
+          ? _User.fromMap(map['user'] as Map<String, dynamic>)
           : null,
       status: map['status'] != null ? map['status'] as String : null,
     );
   }
 }
 
-class Service {
+class _Service {
   final String? id;
   final String? name;
   final String? coverUrl;
@@ -51,7 +51,7 @@ class Service {
   final int? used;
   final double? rating;
 
-  Service({
+  _Service({
     this.id,
     this.name,
     this.coverUrl,
@@ -64,8 +64,8 @@ class Service {
     this.rating,
   });
 
-  factory Service.fromMap(Map<String, dynamic> map) {
-    return Service(
+  factory _Service.fromMap(Map<String, dynamic> map) {
+    return _Service(
       id: map['id'] != null ? map['id'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
       coverUrl: map['coverUrl'] != null ? map['coverUrl'] as String : null,
@@ -88,7 +88,7 @@ class Service {
   }
 }
 
-class User {
+class _User {
   final String? fullname;
   final DateTime? dateOfBirth;
   final String? phone;
@@ -97,7 +97,7 @@ class User {
   final String? categoryId;
   final String? gender;
 
-  User({
+  _User({
     this.fullname,
     this.dateOfBirth,
     this.phone,
@@ -107,8 +107,8 @@ class User {
     this.gender,
   });
 
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
+  factory _User.fromMap(Map<String, dynamic> map) {
+    return _User(
       fullname: map['fullname'] != null ? map['fullname'] as String : null,
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])

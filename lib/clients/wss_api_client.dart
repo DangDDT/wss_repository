@@ -8,6 +8,8 @@ import 'package:wss_repository/requests/get_feedback_group_param.dart';
 import 'package:wss_repository/requests/get_feedback_param.dart';
 import 'package:wss_repository/requests/get_task_count_param.dart';
 import 'package:wss_repository/requests/get_task_param.dart';
+import 'package:wss_repository/requests/get_voucher_param.dart';
+import 'package:wss_repository/requests/post_comment_body.dart';
 import 'package:wss_repository/requests/post_service_body.dart';
 import 'package:wss_repository/requests/put_day_off_body.dart';
 import 'package:wss_repository/requests/put_service_status_body.dart';
@@ -47,6 +49,12 @@ abstract class WssApiClient {
   Future getCombo(@Path('id') String id);
 
   //Comment
+  @GET("/Comment/{id}")
+  Future getComments(@Path('id') String id);
+
+  @POST("/Comment")
+  Future postComment(@Body() PostCommentBody body);
+
   @GET("/Comment/{id}")
   Future getComment(@Path('id') String id);
 
@@ -107,4 +115,27 @@ abstract class WssApiClient {
   ///Statistic
   @GET("/Statistic/task-count")
   Future getStatisticTaskCount(@Queries() GetStatisticTaskCountParam param);
+
+  ///File
+  @POST('/File')
+  Future uploadFiles(@Part() List<MultipartFile> files);
+
+  ///Notification
+  @POST("/Noti/subscribe")
+  Future subscribeNotification(
+    @Query('topic') String topic,
+    @Body() List<String> data,
+  );
+
+  @POST("/Noti/unsubscribe")
+  Future unsubscribeNotification(
+    @Query('topic') String topic,
+    @Body() List<String> data,
+  );
+
+  @GET('/Voucher')
+  Future getVouchers(@Queries() GetVoucherParam param);
+
+  @GET('/Voucher/code/{code}')
+  Future getVoucherByCode(@Path('code') String code);
 }

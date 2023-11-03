@@ -10,7 +10,7 @@ class Combo {
   final double? totalAmount;
   final String? description;
   final String? status;
-  final List<ComboService>? comboServices;
+  final List<_ComboService>? comboServices;
 
   Combo({
     this.id,
@@ -38,23 +38,23 @@ class Combo {
           map['description'] != null ? map['description'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
       comboServices: map['comboServices'] != null
-          ? List<ComboService>.from((map['comboServices'] as List<dynamic>)
-              .map((e) => ComboService.fromMap(e as Map<String, dynamic>)))
+          ? List<_ComboService>.from((map['comboServices'] as List<dynamic>)
+              .map((e) => _ComboService.fromMap(e as Map<String, dynamic>)))
           : null,
     );
   }
 }
 
-class ComboService {
+class _ComboService {
   final String? id;
   final String? name;
   final int? quantity;
-  final CurrentPrices? currentPrices;
+  final _CurrentPrices? currentPrices;
   final List<ServiceImages>? serviceImages;
   final String? categoryId;
   final String? unit;
 
-  ComboService({
+  _ComboService({
     this.id,
     this.name,
     this.quantity,
@@ -64,13 +64,13 @@ class ComboService {
     this.unit,
   });
 
-  factory ComboService.fromMap(Map<String, dynamic> map) {
-    return ComboService(
+  factory _ComboService.fromMap(Map<String, dynamic> map) {
+    return _ComboService(
       id: map['id'] != null ? map['id'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       currentPrices: map['currentPrices'] != null
-          ? CurrentPrices.fromMap(map['currentPrices'] as Map<String, dynamic>)
+          ? _CurrentPrices.fromMap(map['currentPrices'] as Map<String, dynamic>)
           : null,
       serviceImages: map['serviceImages'] != null
           ? List<ServiceImages>.from((map['serviceImages'] as List<dynamic>)
@@ -83,17 +83,17 @@ class ComboService {
   }
 }
 
-class CurrentPrices {
+class _CurrentPrices {
   final String? dateOfApply;
   final double? price;
 
-  CurrentPrices({
+  _CurrentPrices({
     this.dateOfApply,
     this.price,
   });
 
-  factory CurrentPrices.fromMap(Map<String, dynamic> map) {
-    return CurrentPrices(
+  factory _CurrentPrices.fromMap(Map<String, dynamic> map) {
+    return _CurrentPrices(
       dateOfApply:
           map['dateOfApply'] != null ? map['dateOfApply'] as String : null,
       price: map['price'] != null ? map['price'] as double : null,

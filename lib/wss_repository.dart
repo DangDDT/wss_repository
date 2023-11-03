@@ -8,6 +8,7 @@ import 'package:wss_repository/repositories/combo_repository.dart';
 import 'package:wss_repository/repositories/comment_repository.dart';
 import 'package:wss_repository/repositories/day_off_repository.dart';
 import 'package:wss_repository/repositories/feedback_repository.dart';
+import 'package:wss_repository/repositories/file_repository.dart';
 import 'package:wss_repository/repositories/statistic_repository.dart';
 
 import 'clients/base/dio_client.dart';
@@ -84,6 +85,7 @@ class WssRepository {
     IStatisticRepository? statisticRepository,
     IServiceRepository? serviceRepository,
     ITaskRepository? taskRepository,
+    IFileRepository? fileRepository,
     AuthConfig? authConfig,
   }) async {
     final dioClient = Get.put<DioClient>(
@@ -128,6 +130,9 @@ class WssRepository {
       )
       ..put<ITaskRepository>(
         taskRepository ?? TaskRepository(),
+      )
+      ..put<IFileRepository>(
+        fileRepository ?? FileRepository(),
       );
   }
 }

@@ -7,8 +7,8 @@ class Service {
   final String? code;
   final String? name;
   final int? quantity;
-  final Category? category;
-  final CurrentPrices? currentPrices;
+  final _Category? category;
+  final _CurrentPrices? currentPrices;
   final List<ServiceImages>? serviceImages;
   final String? categoryId;
   final String? unit;
@@ -40,10 +40,10 @@ class Service {
       name: map['name'] != null ? map['name'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       category: map['category'] != null
-          ? Category.fromMap(map['category'] as Map<String, dynamic>)
+          ? _Category.fromMap(map['category'] as Map<String, dynamic>)
           : null,
       currentPrices: map['currentPrices'] != null
-          ? CurrentPrices.fromMap(map['currentPrices'] as Map<String, dynamic>)
+          ? _CurrentPrices.fromMap(map['currentPrices'] as Map<String, dynamic>)
           : null,
       serviceImages: map['serviceImages'] != null
           ? (map['serviceImages'] as List)
@@ -62,7 +62,7 @@ class Service {
   }
 }
 
-class Category {
+class _Category {
   final String? id;
   final String? name;
   final String? imageUrl;
@@ -70,7 +70,7 @@ class Category {
   final String? status;
   final bool? isOrderLimit;
 
-  Category({
+  _Category({
     this.id,
     this.name,
     this.imageUrl,
@@ -79,8 +79,8 @@ class Category {
     this.isOrderLimit,
   });
 
-  factory Category.fromMap(Map<String, dynamic> map) {
-    return Category(
+  factory _Category.fromMap(Map<String, dynamic> map) {
+    return _Category(
       id: map['id'] != null ? map['id'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
       imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
@@ -93,17 +93,17 @@ class Category {
   }
 }
 
-class CurrentPrices {
+class _CurrentPrices {
   final DateTime? dateOfApply;
   final double? price;
 
-  CurrentPrices({
+  _CurrentPrices({
     this.dateOfApply,
     this.price,
   });
 
-  factory CurrentPrices.fromMap(Map<String, dynamic> map) {
-    return CurrentPrices(
+  factory _CurrentPrices.fromMap(Map<String, dynamic> map) {
+    return _CurrentPrices(
       dateOfApply: map['dateOfApply'] != null
           ? DateTime.parse(map['dateOfApply'] as String)
           : null,

@@ -10,7 +10,7 @@ class Category {
   final String? description;
   final String? status;
   final bool? isOrderLimit;
-  final Commission? commission;
+  final _Commission? commission;
 
   Category({
     this.id,
@@ -33,25 +33,25 @@ class Category {
       isOrderLimit:
           map['isOrderLimit'] != null ? map['isOrderLimit'] as bool : null,
       commission: map['commission'] != null
-          ? Commission.fromMap(map['commission'] as Map<String, dynamic>)
+          ? _Commission.fromMap(map['commission'] as Map<String, dynamic>)
           : null,
     );
   }
 }
 
-class Commission {
+class _Commission {
   final String? id;
   final DateTime? dateOfApply;
   final double? commisionValue;
 
-  Commission({
+  _Commission({
     this.id,
     this.dateOfApply,
     this.commisionValue,
   });
 
-  factory Commission.fromMap(Map<String, dynamic> map) {
-    return Commission(
+  factory _Commission.fromMap(Map<String, dynamic> map) {
+    return _Commission(
       id: map['id'] != null ? map['id'] as String : null,
       dateOfApply: map['dateOfApply'] != null
           ? DateTime.parse(map['dateOfApply'])
