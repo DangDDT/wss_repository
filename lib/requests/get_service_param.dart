@@ -38,4 +38,18 @@ class GetServiceParam extends GetParam {
         'Pending',
         'Rejected',
       ];
+
+  @override
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      ...super.toMap(),
+      if (status != null) 'status': status,
+      if (checkDate != null) 'checkDate': checkDate?.toIso8601String(),
+      if (priceFrom != null) 'priceFrom': priceFrom,
+      if (priceTo != null) 'priceTo': priceTo,
+    };
+  }
+
+  @override
+  Map<String, dynamic> toJson() => toMap();
 }
