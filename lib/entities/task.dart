@@ -265,7 +265,7 @@ class _Service {
   final String? code;
   final String? name;
   final num? quantity;
-  final List<dynamic> serviceImages;
+  final List<String> serviceImages;
   final String? categoryId;
   final String? description;
   final String? status;
@@ -283,7 +283,7 @@ class _Service {
       quantity: json["quantity"],
       serviceImages: json["serviceImages"] == null
           ? []
-          : List<dynamic>.from(json["serviceImages"]!.map((x) => x)),
+          : List<String>.from(json["serviceImages"].map((x) => x)),
       categoryId: json["categoryId"],
       description: json["description"],
       status: json["status"],
