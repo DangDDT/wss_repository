@@ -214,6 +214,8 @@ class _OrderDetail {
     required this.description,
     required this.status,
     required this.service,
+    required this.startDate,
+    required this.endDate,
   });
 
   final String? id;
@@ -226,6 +228,8 @@ class _OrderDetail {
   final String? description;
   final String? status;
   final _Service? service;
+  final DateTime? startDate;
+  final DateTime? endDate;
 
   factory _OrderDetail.fromJson(Map<String, dynamic> json) {
     return _OrderDetail(
@@ -240,6 +244,8 @@ class _OrderDetail {
       status: json["status"],
       service:
           json["service"] == null ? null : _Service.fromJson(json["service"]),
+      startDate: DateTime.tryParse(json["startDate"] ?? ""),
+      endDate: DateTime.tryParse(json["endDate"] ?? ""),
     );
   }
 }
