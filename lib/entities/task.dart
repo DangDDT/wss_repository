@@ -11,6 +11,8 @@ class Task {
     required this.status,
     required this.createBy,
     required this.comments,
+    required this.startDate,
+    required this.endDate,
   });
 
   final String? id;
@@ -22,6 +24,8 @@ class Task {
   final String? status;
   final _CreateBy? createBy;
   final List<_Comment> comments;
+  final DateTime? startDate;
+  final DateTime? endDate;
 
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
@@ -41,6 +45,8 @@ class Task {
           ? []
           : List<_Comment>.from(
               json["comments"]!.map((x) => _Comment.fromJson(x))),
+      startDate: DateTime.tryParse(json["startDate"] ?? ""),
+      endDate: DateTime.tryParse(json["endDate"] ?? ""),
     );
   }
 }
@@ -214,8 +220,6 @@ class _OrderDetail {
     required this.description,
     required this.status,
     required this.service,
-    required this.startDate,
-    required this.endDate,
   });
 
   final String? id;
@@ -228,8 +232,6 @@ class _OrderDetail {
   final String? description;
   final String? status;
   final _Service? service;
-  final DateTime? startDate;
-  final DateTime? endDate;
 
   factory _OrderDetail.fromJson(Map<String, dynamic> json) {
     return _OrderDetail(
@@ -244,8 +246,6 @@ class _OrderDetail {
       status: json["status"],
       service:
           json["service"] == null ? null : _Service.fromJson(json["service"]),
-      startDate: DateTime.tryParse(json["startDate"] ?? ""),
-      endDate: DateTime.tryParse(json["endDate"] ?? ""),
     );
   }
 }
