@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, library_private_types_in_public_api, unused_element
 
 class Task {
   final String? id;
@@ -6,10 +6,12 @@ class Task {
   final _Partner? partner;
   final _Service? service;
   final _OrderDetail? orderDetail;
+  final _Order? order;
   final String? taskName;
   final DateTime? startDate;
   final DateTime? endDate;
   final String? status;
+  final _CreateBy? createBy;
   final List<_Comment>? comments;
 
   Task({
@@ -17,11 +19,13 @@ class Task {
     this.code,
     this.partner,
     this.service,
+    this.order,
     this.orderDetail,
     this.taskName,
     this.startDate,
     this.endDate,
     this.status,
+    this.createBy,
     this.comments,
   });
 
@@ -35,6 +39,9 @@ class Task {
       service: map['service'] != null
           ? _Service.fromMap(map['service'] as Map<String, dynamic>)
           : null,
+      order: map['order'] != null
+          ? _Order.fromJson(map['order'] as Map<String, dynamic>)
+          : null,
       orderDetail: map['orderDetail'] != null
           ? _OrderDetail.fromMap(map['orderDetail'] as Map<String, dynamic>)
           : null,
@@ -46,6 +53,9 @@ class Task {
           ? DateTime.parse(map['endDate'] as String)
           : null,
       status: map['status'] != null ? map['status'] as String : null,
+      createBy: map['createBy'] != null
+          ? _CreateBy.fromJson(map['createBy'] as Map<String, dynamic>)
+          : null,
       comments: map['comments'] != null
           ? (map['comments'] as List)
               .map((e) => _Comment.fromMap(e as Map<String, dynamic>))
@@ -206,3 +216,151 @@ class _Partner {
     );
   }
 }
+
+class _Order {
+  _Order({
+    required this.code,
+    required this.id,
+    required this.customerId,
+    required this.weddingInformationId,
+    required this.fullname,
+    required this.address,
+    required this.phone,
+    required this.comboId,
+    required this.totalAmount,
+    required this.totalAmountRequest,
+    required this.description,
+    required this.createDate,
+    required this.createBy,
+    required this.statusPayment,
+    required this.statusOrder,
+    required this.customer,
+  });
+
+  final String? code;
+  final String? id;
+  final String? customerId;
+  final String? weddingInformationId;
+  final String? fullname;
+  final String? address;
+  final String? phone;
+  final String? comboId;
+  final num? totalAmount;
+  final num? totalAmountRequest;
+  final String? description;
+  final DateTime? createDate;
+  final String? createBy;
+  final String? statusPayment;
+  final String? statusOrder;
+  final _Customer? customer;
+
+  factory _Order.fromJson(Map<String, dynamic> json) {
+    return _Order(
+      code: json["code"],
+      id: json["id"],
+      customerId: json["customerId"],
+      weddingInformationId: json["weddingInformationId"],
+      fullname: json["fullname"],
+      address: json["address"],
+      phone: json["phone"],
+      comboId: json["comboId"],
+      totalAmount: json["totalAmount"],
+      totalAmountRequest: json["totalAmountRequest"],
+      description: json["description"],
+      createDate: DateTime.tryParse(json["createDate"] ?? ""),
+      createBy: json["createBy"],
+      statusPayment: json["statusPayment"],
+      statusOrder: json["statusOrder"],
+      customer: json["customer"] == null
+          ? null
+          : _Customer.fromJson(json["customer"]),
+    );
+  }
+}
+
+class _Customer {
+  _Customer({
+    required this.fullname,
+    required this.dateOfBirth,
+    required this.phone,
+    required this.address,
+    required this.gender,
+  });
+
+  final String? fullname;
+  final DateTime? dateOfBirth;
+  final String? phone;
+  final String? address;
+  final String? gender;
+
+  factory _Customer.fromJson(Map<String, dynamic> json) {
+    return _Customer(
+      fullname: json["fullname"],
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      phone: json["phone"],
+      address: json["address"],
+      gender: json["gender"],
+    );
+  }
+}
+
+/*
+{
+	"code": "P0000042",
+	"id": "54d85a45-6d03-45a7-9a9a-9d959268d9ee",
+	"customerId": "ee06a0c8-dace-492f-b381-c4b8032f6ef3",
+	"weddingInformationId": "00609067-6356-4d68-a364-225d98c605f4",
+	"fullname": "Hang",
+	"address": "23 dia chi nay ne",
+	"phone": "",
+	"comboId": "39f54a0c-063a-4eb1-9f8a-82e3afb20cb3",
+	"totalAmount": 2200000,
+	"totalAmountRequest": 660000,
+	"description": "string",
+	"createDate": "2023-11-07T16:57:29.82Z",
+	"createBy": "ee06a0c8-dace-492f-b381-c4b8032f6ef3",
+	"statusPayment": "PENDING",
+	"statusOrder": "PENDING",
+	"customer": {
+		"fullname": "LOL",
+		"dateOfBirth": "2023-11-03T10:13:17Z",
+		"phone": "+84987654326",
+		"address": "123",
+		"gender": "Male"
+	}
+}*/
+
+class _CreateBy {
+  _CreateBy({
+    required this.fullname,
+    required this.dateOfBirth,
+    required this.phone,
+    required this.address,
+    required this.gender,
+  });
+
+  final String? fullname;
+  final DateTime? dateOfBirth;
+  final String? phone;
+  final String? address;
+  final String? gender;
+
+  factory _CreateBy.fromJson(Map<String, dynamic> json) {
+    return _CreateBy(
+      fullname: json["fullname"],
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      phone: json["phone"],
+      address: json["address"],
+      gender: json["gender"],
+    );
+  }
+}
+
+/*
+{
+	"fullname": "LOL",
+	"dateOfBirth": "2023-11-03T10:13:17Z",
+	"phone": "+84987654326",
+	"address": "123",
+	"gender": "Male"
+}*/

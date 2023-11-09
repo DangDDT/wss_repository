@@ -15,18 +15,6 @@ abstract class GetParam {
   List<String> get sortOrderSelection => ['ASC', 'DESC'];
 
   Map<String, dynamic> toMap() {
-    if (sortKey != null) {
-      if (!sortKeySelection.contains(sortKey)) {
-        throw ArgumentError(
-            'sortKey must be one of ${sortKeySelection.join(', ')}');
-      }
-    }
-    if (sortOrder != null) {
-      if (!sortOrderSelection.contains(sortOrder)) {
-        throw ArgumentError(
-            'sortOrder must be one of ${sortOrderSelection.join(', ')}');
-      }
-    }
     return <String, dynamic>{
       if (page != null) 'page': page,
       if (pageSize != null) 'page-size': pageSize,

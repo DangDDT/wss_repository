@@ -1,16 +1,19 @@
 class PostDayOffBody {
   final DateTime? day;
   final String? reason;
+  final String serviceId;
 
   PostDayOffBody({
     required this.day,
     required this.reason,
+    required this.serviceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       if (day != null) 'day': day?.toIso8601String(),
       if (reason != null) 'reason': reason,
+      'serviceId': serviceId,
     };
   }
 

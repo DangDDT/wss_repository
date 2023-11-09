@@ -11,6 +11,9 @@ class GetServiceParam extends GetParam {
   final DateTime? checkDate;
   final double? priceFrom;
   final double? priceTo;
+  final String? name;
+  final DateTime? createdAtFrom;
+  final DateTime? createdAtTo;
   GetServiceParam({
     required this.status,
     required this.checkDate,
@@ -20,6 +23,9 @@ class GetServiceParam extends GetParam {
     required super.pageSize,
     required super.sortKey,
     required super.sortOrder,
+    required this.name,
+    required this.createdAtFrom,
+    required this.createdAtTo,
   });
 
   @override
@@ -47,6 +53,10 @@ class GetServiceParam extends GetParam {
       if (checkDate != null) 'checkDate': checkDate?.toIso8601String(),
       if (priceFrom != null) 'priceFrom': priceFrom,
       if (priceTo != null) 'priceTo': priceTo,
+      if (name != null) 'name': name,
+      if (createdAtFrom != null)
+        'createdAtFrom': createdAtFrom?.toIso8601String(),
+      if (createdAtTo != null) 'createdAtTo': createdAtTo?.toIso8601String(),
     };
   }
 

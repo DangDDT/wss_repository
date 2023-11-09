@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_field
 
 /// List of status selection
 /// - EXPECTED or Expected: Dự kiến
@@ -6,9 +6,11 @@
 /// - IN_PROGRESS or InProgress: Đang thực hiện
 /// - DONE or Done: Hoàn thành
 class PutTaskBody {
-  final String status;
+  final String? status;
+  final String? imageEvidence;
   PutTaskBody({
     required this.status,
+    required this.imageEvidence,
   });
 
   final List<String> _listStatusSelection = [
@@ -23,11 +25,9 @@ class PutTaskBody {
   ];
 
   Map<String, dynamic> toMap() {
-    if (!_listStatusSelection.contains(status)) {
-      throw Exception('You must choose status in $_listStatusSelection');
-    }
     return <String, dynamic>{
-      'status': status,
+      if (status != null) 'status': status,
+      if (imageEvidence != null) 'imageEvidence': imageEvidence,
     };
   }
 

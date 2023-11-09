@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, library_private_types_in_public_api
 
 import 'service_image.dart';
 
@@ -16,6 +16,7 @@ class Service {
   final String? status;
   final int? used;
   final double? rating;
+  final DateTime? createDate;
 
   Service({
     this.id,
@@ -31,6 +32,7 @@ class Service {
     this.status,
     this.used,
     this.rating,
+    this.createDate,
   });
 
   factory Service.fromMap(Map<String, dynamic> map) {
@@ -58,6 +60,9 @@ class Service {
       status: map['status'] != null ? map['status'] as String : null,
       used: map['used'] != null ? map['used'] as int : null,
       rating: map['rating'] != null ? map['rating'] as double : null,
+      createDate: map['createDate'] != null
+          ? DateTime.parse(map['createDate'] as String)
+          : null,
     );
   }
 }

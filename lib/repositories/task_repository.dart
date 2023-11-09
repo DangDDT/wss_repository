@@ -32,7 +32,7 @@ class TaskRepository implements ITaskRepository {
     final response =
         await _dioClient.request<DataPagingListResponse<Task>, Task>(
       () => _client.getTasks(param),
-      decoder: (json) => Task.fromMap(json),
+      decoder: (json) => Task.fromJson(json),
       successResponseMapperType: SuccessResponseMapperType.dataPagingArray,
     );
     return response;
@@ -44,7 +44,7 @@ class TaskRepository implements ITaskRepository {
   }) async {
     final response = await _dioClient.request<Task, Task>(
       () => _client.getTask(id),
-      decoder: (json) => Task.fromMap(json),
+      decoder: (json) => Task.fromJson(json),
       successResponseMapperType: SuccessResponseMapperType.jsonObject,
     );
     return response;
