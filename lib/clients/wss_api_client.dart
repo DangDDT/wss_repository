@@ -109,7 +109,7 @@ abstract class WssApiClient {
   @GET("/Task/{id}")
   Future getTask(@Path('id') String id);
 
-  @PUT("/Task/{id}")
+  @PUT("/Task/{id}/status")
   Future putTask(@Path('id') String id, @Body() PutTaskBody body);
 
   ///Statistic
