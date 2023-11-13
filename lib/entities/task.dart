@@ -9,6 +9,7 @@ class Task {
     required this.order,
     required this.taskName,
     required this.status,
+    required this.imageEvidence,
     required this.createBy,
     required this.comments,
     required this.startDate,
@@ -22,6 +23,7 @@ class Task {
   final _Order? order;
   final String? taskName;
   final String? status;
+  final String? imageEvidence;
   final _CreateBy? createBy;
   final List<_Comment> comments;
   final DateTime? startDate;
@@ -38,6 +40,7 @@ class Task {
       order: json["order"] == null ? null : _Order.fromJson(json["order"]),
       taskName: json["taskName"],
       status: json["status"],
+      imageEvidence: json["imageEvidence"],
       createBy: json["createBy"] == null
           ? null
           : _CreateBy.fromJson(json["createBy"]),
