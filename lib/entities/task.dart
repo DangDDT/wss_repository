@@ -22,8 +22,8 @@ class Task {
   final _Partner? partner;
   final List<_OrderDetail> orderDetails;
   final String? taskName;
-  final dynamic startDate;
-  final dynamic endDate;
+  final DateTime? startDate;
+  final DateTime? endDate;
   final String? imageEvidence;
   final String? status;
   final _CreateBy? createBy;
@@ -41,8 +41,8 @@ class Task {
           : List<_OrderDetail>.from(
               json["orderDetails"]!.map((x) => _OrderDetail.fromJson(x))),
       taskName: json["taskName"],
-      startDate: json["startDate"],
-      endDate: json["endDate"],
+      startDate: DateTime.tryParse(json["startDate"] ?? ""),
+      endDate: DateTime.tryParse(json["endDate"] ?? ""),
       imageEvidence: json["imageEvidence"],
       status: json["status"],
       createBy: json["createBy"] == null
@@ -162,8 +162,6 @@ class _OrderDetail {
     required this.status,
     required this.order,
     required this.service,
-    required this.feedbacks,
-    required this.tasks,
   });
 
   final String? id;
@@ -179,8 +177,6 @@ class _OrderDetail {
   final String? status;
   final _Order? order;
   final _Service? service;
-  final List<dynamic> feedbacks;
-  final List<dynamic> tasks;
 
   factory _OrderDetail.fromJson(Map<String, dynamic> json) {
     return _OrderDetail(
@@ -198,12 +194,6 @@ class _OrderDetail {
       order: json["order"] == null ? null : _Order.fromJson(json["order"]),
       service:
           json["service"] == null ? null : _Service.fromJson(json["service"]),
-      feedbacks: json["feedbacks"] == null
-          ? []
-          : List<dynamic>.from(json["feedbacks"]!.map((x) => x)),
-      tasks: json["tasks"] == null
-          ? []
-          : List<dynamic>.from(json["tasks"]!.map((x) => x)),
     );
   }
 }
@@ -286,8 +276,6 @@ class _Service {
     required this.name,
     required this.coverUrl,
     required this.quantity,
-    required this.category,
-    required this.currentPrices,
     required this.serviceImages,
     required this.categoryId,
     required this.unit,
@@ -296,10 +284,8 @@ class _Service {
     required this.used,
     required this.totalRevenue,
     required this.rating,
-    required this.reason,
     required this.createDate,
     required this.updateDate,
-    required this.createByNavigation,
   });
 
   final String? id;
@@ -307,8 +293,6 @@ class _Service {
   final String? name;
   final dynamic coverUrl;
   final num? quantity;
-  final dynamic category;
-  final dynamic currentPrices;
   final List<String> serviceImages;
   final String? categoryId;
   final String? unit;
@@ -317,10 +301,8 @@ class _Service {
   final num? used;
   final num? totalRevenue;
   final num? rating;
-  final dynamic reason;
   final DateTime? createDate;
   final DateTime? updateDate;
-  final dynamic createByNavigation;
 
   factory _Service.fromJson(Map<String, dynamic> json) {
     return _Service(
@@ -329,8 +311,6 @@ class _Service {
       name: json["name"],
       coverUrl: json["coverUrl"],
       quantity: json["quantity"],
-      category: json["category"],
-      currentPrices: json["currentPrices"],
       serviceImages: json["serviceImages"] == null
           ? []
           : List<String>.from(json["serviceImages"]!.map((x) => x)),
@@ -341,10 +321,8 @@ class _Service {
       used: json["used"],
       totalRevenue: json["totalRevenue"],
       rating: json["rating"],
-      reason: json["reason"],
       createDate: DateTime.tryParse(json["createDate"] ?? ""),
       updateDate: DateTime.tryParse(json["updateDate"] ?? ""),
-      createByNavigation: json["createByNavigation"],
     );
   }
 }
