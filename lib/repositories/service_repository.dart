@@ -4,6 +4,7 @@ import 'package:wss_repository/entities/service.dart';
 import 'package:wss_repository/requests/get_service_param.dart';
 import 'package:wss_repository/requests/post_service_body.dart';
 import 'package:wss_repository/requests/put_service_status_body.dart';
+import 'package:wss_repository/requests/put_status_service_body.dart';
 
 import '../base/mappers/api_mappers/base/base_success_response_mapper.dart';
 import '../clients/base/dio_client.dart';
@@ -35,6 +36,11 @@ abstract class IServiceRepository {
   Future<bool> putServiceStatus({
     required String id,
     required PutServiceStatusBody body,
+  });
+
+  Future<bool> putStatusService({
+    required String id,
+    required PutStatusServiceBody body,
   });
 }
 
@@ -94,6 +100,17 @@ class ServiceRepository implements IServiceRepository {
   }) async {
     await _dioClient.request<dynamic, dynamic>(
       () => _client.putServiceStatus(id, body),
+      decoder: (json) => json,
+      successResponseMapperType: SuccessResponseMapperType.jsonObject,
+    );
+    return true;
+  }
+
+  @override
+  Future<bool> putStatusService(
+      {required String id, required PutStatusServiceBody body}) async {
+    await _dioClient.request<dynamic, dynamic>(
+      () => _client.putStatusService(id, body),
       decoder: (json) => json,
       successResponseMapperType: SuccessResponseMapperType.jsonObject,
     );

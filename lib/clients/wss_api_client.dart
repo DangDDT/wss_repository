@@ -13,6 +13,7 @@ import 'package:wss_repository/requests/post_comment_body.dart';
 import 'package:wss_repository/requests/post_service_body.dart';
 import 'package:wss_repository/requests/put_day_off_body.dart';
 import 'package:wss_repository/requests/put_service_status_body.dart';
+import 'package:wss_repository/requests/put_status_service_body.dart';
 import 'package:wss_repository/requests/put_task_body.dart';
 import 'package:wss_repository/requests/update_profile_body.dart';
 
@@ -101,6 +102,10 @@ abstract class WssApiClient {
   @POST("/Service/{id}")
   Future putServiceStatus(
       @Path('id') String id, @Body() PutServiceStatusBody body);
+
+  @PUT("/Service/status/{id}")
+  Future putStatusService(
+      @Path('id') String id, @Body() PutStatusServiceBody body);
 
   ///Task
   @GET("/Task")
