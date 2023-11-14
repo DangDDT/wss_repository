@@ -167,12 +167,12 @@ class _OrderDetail {
   final String? id;
   final String? orderId;
   final String? serviceId;
-  final dynamic partnerId;
+  final String? partnerId;
   final String? address;
   final DateTime? startTime;
   final DateTime? endTime;
   final num? price;
-  final dynamic total;
+  final num? total;
   final String? description;
   final String? status;
   final _Order? order;
