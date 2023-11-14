@@ -309,7 +309,7 @@ class _Service {
   final num? quantity;
   final dynamic category;
   final dynamic currentPrices;
-  final List<dynamic> serviceImages;
+  final List<String> serviceImages;
   final String? categoryId;
   final String? unit;
   final String? description;
@@ -333,7 +333,7 @@ class _Service {
       currentPrices: json["currentPrices"],
       serviceImages: json["serviceImages"] == null
           ? []
-          : List<dynamic>.from(json["serviceImages"]!.map((x) => x)),
+          : List<String>.from(json["serviceImages"]!.map((x) => x)),
       categoryId: json["categoryId"],
       unit: json["unit"],
       description: json["description"],
