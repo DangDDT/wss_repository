@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, library_private_types_in_public_api
+// ignore_for_file: public_member_api_docs, sort_constructors_first, library_private_types_in_public_api, unused_element
 
 import 'service_image.dart';
 
@@ -77,6 +77,7 @@ class _Category {
   final String? description;
   final String? status;
   final bool? isOrderLimit;
+  final _Commission? commission;
 
   _Category({
     this.id,
@@ -85,6 +86,7 @@ class _Category {
     this.description,
     this.status,
     this.isOrderLimit,
+    this.commission,
   });
 
   factory _Category.fromMap(Map<String, dynamic> map) {
@@ -97,6 +99,29 @@ class _Category {
       status: map['status'] != null ? map['status'] as String : null,
       isOrderLimit:
           map['isOrderLimit'] != null ? map['isOrderLimit'] as bool : null,
+      commission: map['commission'] != null
+          ? _Commission.fromJson(map['commission'] as Map<String, dynamic>)
+          : null,
+    );
+  }
+}
+
+class _Commission {
+  _Commission({
+    required this.id,
+    required this.dateOfApply,
+    required this.commisionValue,
+  });
+
+  final String? id;
+  final DateTime? dateOfApply;
+  final num? commisionValue;
+
+  factory _Commission.fromJson(Map<String, dynamic> json) {
+    return _Commission(
+      id: json["id"],
+      dateOfApply: DateTime.tryParse(json["dateOfApply"] ?? ""),
+      commisionValue: json["commisionValue"],
     );
   }
 }
