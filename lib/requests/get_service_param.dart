@@ -14,6 +14,7 @@ class GetServiceParam extends GetParam {
   final String? name;
   final DateTime? createdAtFrom;
   final DateTime? createdAtTo;
+  final String? categoryId;
   GetServiceParam({
     required this.status,
     required this.checkDate,
@@ -26,6 +27,7 @@ class GetServiceParam extends GetParam {
     required this.name,
     required this.createdAtFrom,
     required this.createdAtTo,
+    required this.categoryId,
   });
 
   @override
@@ -57,6 +59,7 @@ class GetServiceParam extends GetParam {
       if (createdAtFrom != null)
         'createdAtFrom': createdAtFrom?.toIso8601String(),
       if (createdAtTo != null) 'createdAtTo': createdAtTo?.toIso8601String(),
+      if (categoryId != null) 'categoryId': categoryId,
     };
   }
 
