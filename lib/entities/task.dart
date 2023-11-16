@@ -327,7 +327,7 @@ class _Service {
   final String? name;
   final dynamic coverUrl;
   final num? quantity;
-  final List<String> serviceImages;
+  final List<_ServiceImage> serviceImages;
   final String? categoryId;
   final String? unit;
   final String? description;
@@ -347,7 +347,8 @@ class _Service {
       quantity: json["quantity"],
       serviceImages: json["serviceImages"] == null
           ? []
-          : List<String>.from(json["serviceImages"]!.map((x) => x)),
+          : List<_ServiceImage>.from(
+              json["serviceImages"]!.map((x) => _ServiceImage.fromJson(x))),
       categoryId: json["categoryId"],
       unit: json["unit"],
       description: json["description"],
@@ -357,6 +358,20 @@ class _Service {
       rating: json["rating"],
       createDate: DateTime.tryParse(json["createDate"] ?? ""),
       updateDate: DateTime.tryParse(json["updateDate"] ?? ""),
+    );
+  }
+}
+
+class _ServiceImage {
+  _ServiceImage({
+    required this.imageUrl,
+  });
+
+  final String? imageUrl;
+
+  factory _ServiceImage.fromJson(Map<String, dynamic> json) {
+    return _ServiceImage(
+      imageUrl: json["imageUrl"],
     );
   }
 }
