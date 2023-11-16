@@ -7,6 +7,7 @@ class GetDayOffParam extends GetParam {
   final DateTime? fromDate;
   final DateTime? toDate;
   final List<String>? status;
+  final String? serviceId;
 
   GetDayOffParam({
     required this.fromDate,
@@ -16,6 +17,7 @@ class GetDayOffParam extends GetParam {
     required super.pageSize,
     required super.sortKey,
     required super.sortOrder,
+    required this.serviceId,
   });
 
   @override
@@ -34,18 +36,11 @@ class GetDayOffParam extends GetParam {
 
   @override
   Map<String, dynamic> toMap() {
-    if (status != null) {
-      for (var item in status!) {
-        if (!statusSelection.contains(item) == false) {
-          throw ArgumentError(
-              'status must be one of ${statusSelection.join(', ')}');
-        }
-      }
-    }
     return <String, dynamic>{
       if (fromDate != null) 'fromDate': fromDate?.toIso8601String(),
       if (toDate != null) 'toDate': toDate?.toIso8601String(),
       if (status != null) 'status': status,
+      if (serviceId != null) 'serviceId': serviceId,
       ...super.toMap(),
     };
   }
