@@ -239,7 +239,7 @@ class _Order {
   final String? statusPayment;
   final String? statusOrder;
   final dynamic combo;
-  final dynamic customer;
+  final _Customer? customer;
   final dynamic voucher;
   final dynamic weddingInformation;
 
@@ -262,9 +262,43 @@ class _Order {
       statusPayment: json["statusPayment"],
       statusOrder: json["statusOrder"],
       combo: json["combo"],
-      customer: json["customer"],
+      customer: json['customer'] != null
+          ? _Customer.fromJson(json['customer'])
+          : null,
       voucher: json["voucher"],
       weddingInformation: json["weddingInformation"],
+    );
+  }
+}
+
+class _Customer {
+  _Customer({
+    required this.fullname,
+    required this.dateOfBirth,
+    required this.phone,
+    required this.address,
+    required this.imageUrl,
+    required this.categoryId,
+    required this.gender,
+  });
+
+  final String? fullname;
+  final DateTime? dateOfBirth;
+  final String? phone;
+  final String? address;
+  final String? imageUrl;
+  final dynamic categoryId;
+  final String? gender;
+
+  factory _Customer.fromJson(Map<String, dynamic> json) {
+    return _Customer(
+      fullname: json["fullname"],
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      phone: json["phone"],
+      address: json["address"],
+      imageUrl: json["imageUrl"],
+      categoryId: json["categoryId"],
+      gender: json["gender"],
     );
   }
 }
