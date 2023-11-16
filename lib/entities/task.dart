@@ -14,6 +14,7 @@ class Task {
     required this.status,
     required this.createBy,
     required this.comments,
+    required this.createDate,
   });
 
   final String? id;
@@ -27,6 +28,7 @@ class Task {
   final String? imageEvidence;
   final String? status;
   final _CreateBy? createBy;
+  final DateTime? createDate;
   final List<_Comment> comments;
 
   factory Task.fromJson(Map<String, dynamic> json) {
@@ -52,6 +54,7 @@ class Task {
           ? []
           : List<_Comment>.from(
               json["comments"]!.map((x) => _Comment.fromJson(x))),
+      createDate: DateTime.tryParse(json["createDate"] ?? ""),
     );
   }
 }
