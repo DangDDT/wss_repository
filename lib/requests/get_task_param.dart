@@ -2,8 +2,8 @@ import 'get_param.dart';
 
 class GetTaskParam extends GetParam {
   final String? taskName;
-  final DateTime? dueDateFrom;
-  final DateTime? dueDateTo;
+  final DateTime? startDateFrom;
+  final DateTime? startDateTo;
   final List<String>? status;
 
   GetTaskParam({
@@ -12,8 +12,8 @@ class GetTaskParam extends GetParam {
     required super.sortKey,
     required super.sortOrder,
     required this.taskName,
-    required this.dueDateFrom,
-    required this.dueDateTo,
+    required this.startDateFrom,
+    required this.startDateTo,
     required this.status,
   });
 
@@ -32,8 +32,9 @@ class GetTaskParam extends GetParam {
     return <String, dynamic>{
       ...super.toMap(),
       if (taskName != null) 'taskName': taskName,
-      if (dueDateFrom != null) 'dueDateFrom': dueDateFrom?.toIso8601String(),
-      if (dueDateTo != null) 'dueDateTo': dueDateTo?.toIso8601String(),
+      if (startDateFrom != null)
+        'startDateFrom': startDateFrom?.toIso8601String(),
+      if (startDateTo != null) 'startDateTo': startDateTo?.toIso8601String(),
       if (status != null) 'status': status,
     };
   }
