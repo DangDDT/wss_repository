@@ -162,13 +162,17 @@ class _OrderDetail {
     required this.status,
     required this.order,
     required this.service,
+    required this.fullname,
+    required this.phone,
   });
 
   final String? id;
   final String? orderId;
   final String? serviceId;
-  final String? partnerId;
+  final String? fullname;
+  final String? phone;
   final String? address;
+  final String? partnerId;
   final DateTime? startTime;
   final DateTime? endTime;
   final num? price;
@@ -194,6 +198,8 @@ class _OrderDetail {
       order: json["order"] == null ? null : _Order.fromJson(json["order"]),
       service:
           json["service"] == null ? null : _Service.fromJson(json["service"]),
+      fullname: json["fullname"],
+      phone: json["phone"],
     );
   }
 }
