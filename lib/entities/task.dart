@@ -327,7 +327,7 @@ class _Service {
   final String? name;
   final dynamic coverUrl;
   final num? quantity;
-  final List<_ServiceImage> serviceImages;
+  final List<_ServiceImage>? serviceImages;
   final String? categoryId;
   final String? unit;
   final String? description;
