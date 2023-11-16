@@ -286,6 +286,7 @@ class _Customer {
     required this.imageUrl,
     required this.categoryId,
     required this.gender,
+    required this.idNavigation,
   });
 
   final String? fullname;
@@ -295,6 +296,7 @@ class _Customer {
   final String? imageUrl;
   final dynamic categoryId;
   final String? gender;
+  final _IdNavigation? idNavigation;
 
   factory _Customer.fromJson(Map<String, dynamic> json) {
     return _Customer(
@@ -305,6 +307,38 @@ class _Customer {
       imageUrl: json["imageUrl"],
       categoryId: json["categoryId"],
       gender: json["gender"],
+      idNavigation: json['idNavigation'] != null
+          ? _IdNavigation.fromJson(json['idNavigation'])
+          : null,
+    );
+  }
+}
+
+class _IdNavigation {
+  _IdNavigation({
+    required this.id,
+    required this.code,
+    required this.username,
+    required this.status,
+    required this.roleName,
+    required this.refId,
+  });
+
+  final String? id;
+  final String? code;
+  final String? username;
+  final String? status;
+  final String? roleName;
+  final String? refId;
+
+  factory _IdNavigation.fromJson(Map<String, dynamic> json) {
+    return _IdNavigation(
+      id: json["id"],
+      code: json["code"],
+      username: json["username"],
+      status: json["status"],
+      roleName: json["roleName"],
+      refId: json["refId"],
     );
   }
 }
