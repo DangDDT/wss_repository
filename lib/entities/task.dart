@@ -21,7 +21,7 @@ class Task {
   final String? code;
   final dynamic staff;
   final _Partner? partner;
-  final _OrderDetail orderDetail;
+  final _OrderDetail? orderDetail;
   final String? taskName;
   final DateTime? startDate;
   final DateTime? endDate;
@@ -38,7 +38,9 @@ class Task {
       staff: json["staff"],
       partner:
           json["partner"] == null ? null : _Partner.fromJson(json["partner"]),
-      orderDetail: _OrderDetail.fromJson(json["orderDetails"]),
+      orderDetail: json["orderDetail"] == null
+          ? null
+          : _OrderDetail.fromJson(json["orderDetail"]),
       taskName: json["taskName"],
       startDate: DateTime.tryParse(json["startDate"] ?? ""),
       endDate: DateTime.tryParse(json["endDate"] ?? ""),
