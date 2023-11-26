@@ -6,7 +6,7 @@ class Task {
     required this.code,
     required this.staff,
     required this.partner,
-    required this.orderDetails,
+    required this.orderDetail,
     required this.taskName,
     required this.startDate,
     required this.endDate,
@@ -21,7 +21,7 @@ class Task {
   final String? code;
   final dynamic staff;
   final _Partner? partner;
-  final List<_OrderDetail> orderDetails;
+  final _OrderDetail orderDetail;
   final String? taskName;
   final DateTime? startDate;
   final DateTime? endDate;
@@ -38,10 +38,7 @@ class Task {
       staff: json["staff"],
       partner:
           json["partner"] == null ? null : _Partner.fromJson(json["partner"]),
-      orderDetails: json["orderDetails"] == null
-          ? []
-          : List<_OrderDetail>.from(
-              json["orderDetails"]!.map((x) => _OrderDetail.fromJson(x))),
+      orderDetail: _OrderDetail.fromJson(json["orderDetails"]),
       taskName: json["taskName"],
       startDate: DateTime.tryParse(json["startDate"] ?? ""),
       endDate: DateTime.tryParse(json["endDate"] ?? ""),
