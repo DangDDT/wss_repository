@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: library_private_types_in_public_api
 
 class Task {
@@ -15,6 +16,7 @@ class Task {
     required this.createBy,
     required this.comments,
     required this.createDate,
+    required this.category,
   });
 
   final String? id;
@@ -29,7 +31,8 @@ class Task {
   final String? status;
   final _CreateBy? createBy;
   final DateTime? createDate;
-  final List<_Comment> comments;
+  final List<_Comment>? comments;
+  final _Category? category;
 
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
@@ -54,6 +57,69 @@ class Task {
           : List<_Comment>.from(
               json["comments"]!.map((x) => _Comment.fromJson(x))),
       createDate: DateTime.tryParse(json["createDate"] ?? ""),
+      category: json["category"] == null
+          ? null
+          : _Category.fromJson(json["category"]),
+    );
+  }
+
+  Task copyWithCategory({
+    required dynamic id,
+    required String categoryCode,
+    required String name,
+    required String description,
+    required double? commissionRate,
+  }) {
+    return Task(
+      id: id ?? id,
+      code: code ?? code,
+      staff: staff ?? staff,
+      partner: partner ?? partner,
+      orderDetail: orderDetail ?? orderDetail,
+      taskName: taskName ?? taskName,
+      startDate: startDate ?? startDate,
+      endDate: endDate ?? endDate,
+      imageEvidence: imageEvidence ?? imageEvidence,
+      status: status ?? status,
+      createBy: createBy ?? createBy,
+      createDate: createDate ?? createDate,
+      comments: comments ?? comments,
+      category: _Category(
+        id: id,
+        code: categoryCode,
+        name: name,
+        description: description,
+        commissionRate: commissionRate,
+      ),
+    );
+  }
+}
+
+class _Category {
+  final dynamic id;
+  final String code;
+  final String name;
+  final String description;
+
+  /// Commission rate of this service, which is used to calculate the commission
+  final double? commissionRate;
+  const _Category({
+    required this.id,
+    required this.code,
+    required this.name,
+    required this.description,
+    required this.commissionRate,
+  });
+
+  factory _Category.fromJson(Map<String, dynamic> json) {
+    return _Category(
+      id: json["id"],
+      code: json["code"],
+      name: json["name"],
+      description: json["description"],
+      commissionRate: json["commissionRate"] == null
+          ? null
+          : double.tryParse(json["commissionRate"].toString()),
     );
   }
 }
