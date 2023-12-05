@@ -16,6 +16,7 @@ class Service {
   final String? status;
   final int? used;
   final double? rating;
+  final String? reason;
   final DateTime? createDate;
   final double? totalRevenue;
   Service({
@@ -34,6 +35,7 @@ class Service {
     this.rating,
     this.createDate,
     this.totalRevenue,
+    this.reason,
   });
 
   factory Service.fromMap(Map<String, dynamic> map) {
@@ -66,6 +68,7 @@ class Service {
           : null,
       totalRevenue:
           map['totalRevenue'] != null ? map['totalRevenue'] as double : null,
+      reason: map['reason'] != null ? map['reason'] as String : null,
     );
   }
 }
