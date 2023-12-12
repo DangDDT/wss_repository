@@ -9,6 +9,8 @@ import 'package:wss_repository/repositories/comment_repository.dart';
 import 'package:wss_repository/repositories/day_off_repository.dart';
 import 'package:wss_repository/repositories/feedback_repository.dart';
 import 'package:wss_repository/repositories/file_repository.dart';
+import 'package:wss_repository/repositories/notification_repository.dart';
+import 'package:wss_repository/repositories/partner_payment_history_repository.dart';
 import 'package:wss_repository/repositories/statistic_repository.dart';
 import 'package:wss_repository/repositories/voucher_repository.dart';
 
@@ -52,6 +54,14 @@ export '/repositories/statistic_repository.dart'
     show IStatisticRepository
     hide StatisticRepository;
 
+export '/repositories/notification_repository.dart'
+    show INotificationRepository
+    hide NotificationRepository;
+
+export '/repositories/partner_payment_history_repository.dart'
+    show IPartnerPaymentHistoryRepository
+    hide PartnerPaymentHistoryRepository;
+
 export '/requests/get_category_param.dart' show GetCategoryParam;
 export '/requests/get_combo_param.dart' show GetComboParam;
 export '/requests/get_day_off_param.dart' show GetDayOffParam;
@@ -68,6 +78,10 @@ export '/requests/put_service_body.dart' show PutServiceBody;
 export '/requests/put_service_status_body.dart' show PutServiceStatusBody;
 export '/requests/put_task_body.dart' show PutTaskBody;
 export '/requests/update_profile_body.dart' show UpdateProfileBody;
+export '/requests/get_notification_param.dart' show GetNotificationParam;
+export '/requests/patch_read_notification.dart' show PatchReadNotificationParam;
+export '/requests/get_partner_payment_history.dart'
+    show GetPartnerPaymentHistoryParam;
 
 class WssRepository {
   static String get tag => 'WssRepository';
@@ -88,6 +102,8 @@ class WssRepository {
     ITaskRepository? taskRepository,
     IFileRepository? fileRepository,
     IVoucherRepository? voucherRepository,
+    INotificationRepository? notificationRepository,
+    IPartnerPaymentHistoryRepository? partnerPaymentHistoryRepository,
     AuthConfig? authConfig,
   }) async {
     final dioClient = Get.put<DioClient>(
@@ -138,6 +154,12 @@ class WssRepository {
       )
       ..put<IVoucherRepository>(
         voucherRepository ?? VoucherRepository(),
+      )
+      ..put<INotificationRepository>(
+        notificationRepository ?? NotificationRepository(),
+      )
+      ..put<IPartnerPaymentHistoryRepository>(
+        partnerPaymentHistoryRepository ?? PartnerPaymentHistoryRepository(),
       );
   }
 }

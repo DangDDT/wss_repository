@@ -6,9 +6,12 @@ import 'package:wss_repository/requests/get_category_param.dart';
 import 'package:wss_repository/requests/get_combo_param.dart';
 import 'package:wss_repository/requests/get_feedback_group_param.dart';
 import 'package:wss_repository/requests/get_feedback_param.dart';
+import 'package:wss_repository/requests/get_notification_param.dart';
+import 'package:wss_repository/requests/get_partner_payment_history.dart';
 import 'package:wss_repository/requests/get_task_count_param.dart';
 import 'package:wss_repository/requests/get_task_param.dart';
 import 'package:wss_repository/requests/get_voucher_param.dart';
+import 'package:wss_repository/requests/patch_read_notification.dart';
 import 'package:wss_repository/requests/post_comment_body.dart';
 import 'package:wss_repository/requests/post_service_body.dart';
 import 'package:wss_repository/requests/put_day_off_body.dart';
@@ -138,9 +141,28 @@ abstract class WssApiClient {
     @Body() List<String> data,
   );
 
+  @GET('/Noti')
+  Future getNotifications(
+    @Queries() GetNotificationParam param,
+  );
+
+  @PATCH('/Noti/{id}')
+  Future patchReadNotification(
+    @Path('id') String id,
+    @Queries() PatchReadNotificationParam param,
+  );
+
+  ///Voucher
+
   @GET('/Voucher')
   Future getVouchers(@Queries() GetVoucherParam param);
 
   @GET('/Voucher/code/{code}')
   Future getVoucherByCode(@Path('code') String code);
+
+  ///PartnerPaymentHistory
+  @GET('PaymentHistory/partner')
+  Future getPartnerPaymentHistories(
+    @Queries() GetPartnerPaymentHistoryParam param,
+  );
 }
