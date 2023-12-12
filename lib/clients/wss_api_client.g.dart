@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: prefer_const_declarations
-
 part of 'wss_api_client.dart';
 
 // **************************************************************************
@@ -967,7 +965,7 @@ class _WssApiClient implements WssApiClient {
     )
         .compose(
           _dio.options,
-          'PaymentHistory/partner',
+          '/PaymentHistory/partner',
           queryParameters: queryParameters,
           data: _data,
         )

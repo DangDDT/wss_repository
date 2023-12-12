@@ -161,7 +161,7 @@ abstract class WssApiClient {
   Future getVoucherByCode(@Path('code') String code);
 
   ///PartnerPaymentHistory
-  @GET('PaymentHistory/partner')
+  @GET('/PaymentHistory/partner')
   Future getPartnerPaymentHistories(
     @Queries() GetPartnerPaymentHistoryParam param,
   );
