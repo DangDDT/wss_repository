@@ -131,13 +131,15 @@ class _Comment {
     required this.content,
     required this.createDate,
     required this.createBy,
+    required this.createByNavigation,
   });
 
   final String? id;
   final String? taskId;
   final String? content;
   final DateTime? createDate;
-  final _Partner? createBy;
+  final String? createBy;
+  final _CreateByNavigation? createByNavigation;
 
   factory _Comment.fromJson(Map<String, dynamic> json) {
     return _Comment(
@@ -145,11 +147,76 @@ class _Comment {
       taskId: json["taskId"],
       content: json["content"],
       createDate: DateTime.tryParse(json["createDate"] ?? ""),
-      createBy:
-          json["createBy"] == null ? null : _Partner.fromJson(json["createBy"]),
+      createBy: json["createBy"],
+      createByNavigation: json["createByNavigation"] == null
+          ? null
+          : _CreateByNavigation.fromJson(json["createByNavigation"]),
     );
   }
 }
+
+class _CreateByNavigation {
+  _CreateByNavigation({
+    required this.id,
+    required this.fullname,
+    required this.dateOfBirth,
+    required this.phone,
+    required this.address,
+    required this.imageUrl,
+    required this.categoryId,
+    required this.gender,
+    required this.idNavigation,
+  });
+
+  final String? id;
+  final String? fullname;
+  final DateTime? dateOfBirth;
+  final String? phone;
+  final String? address;
+  final String? imageUrl;
+  final dynamic categoryId;
+  final String? gender;
+  final dynamic idNavigation;
+
+  factory _CreateByNavigation.fromJson(Map<String, dynamic> json) {
+    return _CreateByNavigation(
+      id: json["id"],
+      fullname: json["fullname"],
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      phone: json["phone"],
+      address: json["address"],
+      imageUrl: json["imageUrl"],
+      categoryId: json["categoryId"],
+      gender: json["gender"],
+      idNavigation: json["idNavigation"],
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "fullname": fullname,
+        "dateOfBirth": dateOfBirth?.toIso8601String(),
+        "phone": phone,
+        "address": address,
+        "imageUrl": imageUrl,
+        "categoryId": categoryId,
+        "gender": gender,
+        "idNavigation": idNavigation,
+      };
+}
+
+/*
+{
+	"id": "43cce28f-3759-4b4d-a865-d0c08295f05f",
+	"fullname": "chu cua hang",
+	"dateOfBirth": "2023-11-23T13:39:16.613Z",
+	"phone": "+84987654311",
+	"address": "HCM",
+	"imageUrl": "https://api.loveweddingservice.shop/upload/eb646f6a-00ac-4abe-af4b-9c6afca180b9.jpg",
+	"categoryId": null,
+	"gender": "Female",
+	"idNavigation": null
+}*/
 
 class _Partner {
   _Partner({
