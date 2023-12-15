@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, library_private_types_in_public_api
 
 import 'service_image.dart';
 
@@ -25,8 +25,9 @@ class Feedback {
     return Feedback(
       id: map['id'] != null ? map['id'] as String : null,
       content: map['content'] != null ? map['content'] as String : null,
-      createDate:
-          map['createDate'] != null ? DateTime.parse(map['createDate']) : null,
+      createDate: map['createDate'] != null
+          ? DateTime.parse(map['createDate']).toLocal()
+          : null,
       rating: map['rating'] != null ? map['rating'] as int : null,
       service: map['service'] != null
           ? _Service.fromMap(map['service'] as Map<String, dynamic>)
@@ -111,7 +112,7 @@ class _User {
     return _User(
       fullname: map['fullname'] != null ? map['fullname'] as String : null,
       dateOfBirth: map['dateOfBirth'] != null
-          ? DateTime.parse(map['dateOfBirth'])
+          ? DateTime.parse(map['dateOfBirth']).toLocal()
           : null,
       phone: map['phone'] != null ? map['phone'] as String : null,
       address: map['address'] != null ? map['address'] as String : null,

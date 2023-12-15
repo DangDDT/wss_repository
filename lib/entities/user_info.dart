@@ -51,7 +51,7 @@ class User {
     return User(
       fullname: map['fullname'] != null ? map['fullname'] as String : null,
       dateOfBirth: map['dateOfBirth'] != null
-          ? DateTime.parse(map['dateOfBirth'])
+          ? DateTime.parse(map['dateOfBirth']).toLocal()
           : null,
       phone: map['phone'] != null ? map['phone'] as String : null,
       address: map['address'] != null ? map['address'] as String : null,

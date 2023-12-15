@@ -24,7 +24,7 @@ class DayOff {
       id: map['id'] != null ? map['id'] as String : null,
       code: map['code'] != null ? map['code'] as String : null,
       partnerId: map['partnerId'] != null ? map['partnerId'] as String : null,
-      day: map['day'] != null ? DateTime.parse(map['day']) : null,
+      day: map['day'] != null ? DateTime.parse(map['day']).toLocal() : null,
       reason: map['reason'] != null ? map['reason'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
       service: map['service'] != null
@@ -89,8 +89,8 @@ class _Service {
       totalRenenue: json["totalRenenue"],
       rating: json["rating"],
       reason: json["reason"],
-      createDate: DateTime.tryParse(json["createDate"] ?? ""),
-      updateDate: DateTime.tryParse(json["updateDate"] ?? ""),
+      createDate: DateTime.tryParse(json["createDate"] ?? "")?.toLocal(),
+      updateDate: DateTime.tryParse(json["updateDate"] ?? "")?.toLocal(),
     );
   }
 }

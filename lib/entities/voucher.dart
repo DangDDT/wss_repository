@@ -23,8 +23,8 @@ class Voucher {
       name: json["name"],
       discountValueVoucher: json["discountValueVoucher"],
       minAmount: json["minAmount"],
-      endTime: DateTime.tryParse(json["endTime"] ?? ""),
-      startTime: DateTime.tryParse(json["startTime"] ?? ""),
+      endTime: DateTime.tryParse(json["endTime"] ?? "")?.toLocal(),
+      startTime: DateTime.tryParse(json["startTime"] ?? "")?.toLocal(),
       createBy: json["createBy"] == null
           ? null
           : _CreateBy.fromJson(json["createBy"]),
@@ -52,7 +52,7 @@ class _CreateBy {
   factory _CreateBy.fromJson(Map<String, dynamic> json) {
     return _CreateBy(
       fullname: json["fullname"],
-      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? "")?.toLocal(),
       phone: json["phone"],
       address: json["address"],
       imageUrl: json["imageUrl"],

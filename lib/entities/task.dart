@@ -45,8 +45,8 @@ class Task {
           ? null
           : _OrderDetail.fromJson(json["orderDetail"]),
       taskName: json["taskName"],
-      startDate: DateTime.tryParse(json["startDate"] ?? ""),
-      endDate: DateTime.tryParse(json["endDate"] ?? ""),
+      startDate: DateTime.tryParse(json["startDate"] ?? "")?.toLocal(),
+      endDate: DateTime.tryParse(json["endDate"] ?? "")?.toLocal(),
       imageEvidence: json["imageEvidence"],
       status: json["status"],
       createBy: json["createBy"] == null
@@ -56,7 +56,7 @@ class Task {
           ? []
           : List<_Comment>.from(
               json["comments"]!.map((x) => _Comment.fromJson(x))),
-      createDate: DateTime.tryParse(json["createDate"] ?? ""),
+      createDate: DateTime.tryParse(json["createDate"] ?? "")?.toLocal(),
       category: json["category"] == null
           ? null
           : _Category.fromJson(json["category"]),
@@ -146,7 +146,7 @@ class _Comment {
       id: json["id"],
       taskId: json["taskId"],
       content: json["content"],
-      createDate: DateTime.tryParse(json["createDate"] ?? ""),
+      createDate: DateTime.tryParse(json["createDate"] ?? "")?.toLocal(),
       createBy: json["createBy"],
       createByNavigation: json["createByNavigation"] == null
           ? null
@@ -182,7 +182,7 @@ class _CreateByNavigation {
     return _CreateByNavigation(
       id: json["id"],
       fullname: json["fullname"],
-      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? "")?.toLocal(),
       phone: json["phone"],
       address: json["address"],
       imageUrl: json["imageUrl"],
@@ -240,7 +240,7 @@ class _Partner {
   factory _Partner.fromJson(Map<String, dynamic> json) {
     return _Partner(
       fullname: json["fullname"],
-      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? "")?.toLocal(),
       phone: json["phone"],
       address: json["address"],
       imageUrl: json["imageUrl"],
@@ -272,7 +272,7 @@ class _CreateBy {
   factory _CreateBy.fromJson(Map<String, dynamic> json) {
     return _CreateBy(
       fullname: json["fullname"],
-      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? "")?.toLocal(),
       phone: json["phone"],
       address: json["address"],
       imageUrl: json["imageUrl"],
@@ -324,8 +324,8 @@ class _OrderDetail {
       serviceId: json["serviceId"],
       partnerId: json["partnerId"],
       address: json["address"],
-      startTime: DateTime.tryParse(json["startTime"] ?? ""),
-      endTime: DateTime.tryParse(json["endTime"] ?? ""),
+      startTime: DateTime.tryParse(json["startTime"] ?? "")?.toLocal(),
+      endTime: DateTime.tryParse(json["endTime"] ?? "")?.toLocal(),
       price: json["price"],
       total: json["total"],
       description: json["description"],
@@ -398,7 +398,7 @@ class _Order {
       totalAmount: json["totalAmount"],
       totalAmountRequest: json["totalAmountRequest"],
       description: json["description"],
-      createDate: DateTime.tryParse(json["createDate"] ?? ""),
+      createDate: DateTime.tryParse(json["createDate"] ?? "")?.toLocal(),
       createBy: json["createBy"],
       statusPayment: json["statusPayment"],
       statusOrder: json["statusOrder"],
@@ -436,7 +436,7 @@ class _Customer {
   factory _Customer.fromJson(Map<String, dynamic> json) {
     return _Customer(
       fullname: json["fullname"],
-      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? ""),
+      dateOfBirth: DateTime.tryParse(json["dateOfBirth"] ?? "")?.toLocal(),
       phone: json["phone"],
       address: json["address"],
       imageUrl: json["imageUrl"],
@@ -531,8 +531,8 @@ class _Service {
       used: json["used"],
       totalRevenue: json["totalRevenue"],
       rating: json["rating"],
-      createDate: DateTime.tryParse(json["createDate"] ?? ""),
-      updateDate: DateTime.tryParse(json["updateDate"] ?? ""),
+      createDate: DateTime.tryParse(json["createDate"] ?? "")?.toLocal(),
+      updateDate: DateTime.tryParse(json["updateDate"] ?? "")?.toLocal(),
     );
   }
 }

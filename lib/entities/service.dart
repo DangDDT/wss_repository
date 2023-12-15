@@ -64,7 +64,7 @@ class Service {
       used: map['used'] != null ? map['used'] as int : null,
       rating: map['rating'] != null ? map['rating'] as double : null,
       createDate: map['createDate'] != null
-          ? DateTime.parse(map['createDate'] as String)
+          ? DateTime.parse(map['createDate'] as String).toLocal()
           : null,
       totalRevenue:
           map['totalRevenue'] != null ? map['totalRevenue'] as double : null,
@@ -123,7 +123,7 @@ class _Commission {
   factory _Commission.fromJson(Map<String, dynamic> json) {
     return _Commission(
       id: json["id"],
-      dateOfApply: DateTime.tryParse(json["dateOfApply"] ?? ""),
+      dateOfApply: DateTime.tryParse(json["dateOfApply"] ?? "")?.toLocal(),
       commisionValue: json["commisionValue"],
     );
   }
@@ -141,7 +141,7 @@ class _CurrentPrices {
   factory _CurrentPrices.fromMap(Map<String, dynamic> map) {
     return _CurrentPrices(
       dateOfApply: map['dateOfApply'] != null
-          ? DateTime.parse(map['dateOfApply'] as String)
+          ? DateTime.parse(map['dateOfApply'] as String).toLocal()
           : null,
       price: map['price'] != null ? map['price'] as double : null,
     );

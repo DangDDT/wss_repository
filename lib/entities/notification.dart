@@ -21,7 +21,7 @@ class Notification {
       content: json["content"],
       title: json["title"],
       userId: json["userId"],
-      createdAt: DateTime.tryParse(json["createdAt"] ?? ""),
+      createdAt: DateTime.tryParse(json["createdAt"] ?? "")?.toLocal(),
       isRead: json["isRead"],
     );
   }

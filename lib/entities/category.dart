@@ -54,7 +54,7 @@ class _Commission {
     return _Commission(
       id: map['id'] != null ? map['id'] as String : null,
       dateOfApply: map['dateOfApply'] != null
-          ? DateTime.parse(map['dateOfApply'])
+          ? DateTime.parse(map['dateOfApply']).toLocal()
           : null,
       commisionValue: map['commisionValue'] != null
           ? map['commisionValue'] as double
