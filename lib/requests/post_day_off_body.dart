@@ -11,7 +11,7 @@ class PostDayOffBody {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      if (day != null) 'day': day?.toIso8601String(),
+      if (day != null) 'day': day?.toUtc().toIso8601String(),
       if (reason != null) 'reason': reason,
       'serviceId': serviceId,
     };

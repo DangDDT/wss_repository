@@ -33,8 +33,9 @@ class GetTaskParam extends GetParam {
       ...super.toMap(),
       if (taskName != null) 'taskName': taskName,
       if (startDateFrom != null)
-        'startDateFrom': startDateFrom?.toIso8601String(),
-      if (startDateTo != null) 'startDateTo': startDateTo?.toIso8601String(),
+        'startDateFrom': startDateFrom?.toUtc().toIso8601String(),
+      if (startDateTo != null)
+        'startDateTo': startDateTo?.toUtc().toIso8601String(),
       if (status != null) 'status': status,
     };
   }

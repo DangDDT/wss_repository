@@ -9,8 +9,8 @@ class GetStatisticTaskCountParam {
 
   Map<String, dynamic> toMap() {
     return {
-      if (fromDate != null) 'fromDate': fromDate?.toIso8601String(),
-      if (toDate != null) 'toDate': toDate?.toIso8601String(),
+      if (fromDate != null) 'fromDate': fromDate?.toUtc().toIso8601String(),
+      if (toDate != null) 'toDate': toDate?.toUtc().toIso8601String(),
     };
   }
 

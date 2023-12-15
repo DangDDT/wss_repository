@@ -52,13 +52,14 @@ class GetServiceParam extends GetParam {
     return <String, dynamic>{
       ...super.toMap(),
       if (status != null) 'status': status,
-      if (checkDate != null) 'checkDate': checkDate?.toIso8601String(),
+      if (checkDate != null) 'checkDate': checkDate?.toUtc().toIso8601String(),
       if (priceFrom != null) 'priceFrom': priceFrom,
       if (priceTo != null) 'priceTo': priceTo,
       if (name != null) 'name': name,
       if (createdAtFrom != null)
-        'createdAtFrom': createdAtFrom?.toIso8601String(),
-      if (createdAtTo != null) 'createdAtTo': createdAtTo?.toIso8601String(),
+        'createdAtFrom': createdAtFrom?.toUtc().toIso8601String(),
+      if (createdAtTo != null)
+        'createdAtTo': createdAtTo?.toUtc().toIso8601String(),
       if (categoryId != null) 'categoryId': categoryId,
     };
   }

@@ -24,8 +24,8 @@ class GetPartnerPaymentHistoryParam extends GetParam {
   @override
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      if (fromDate != null) 'fromDate': fromDate?.toIso8601String(),
-      if (toDate != null) 'toDate': toDate?.toIso8601String(),
+      if (fromDate != null) 'fromDate': fromDate?.toUtc().toIso8601String(),
+      if (toDate != null) 'toDate': toDate?.toUtc().toIso8601String(),
       if (status != null) 'status': status,
       ...super.toMap(),
     };

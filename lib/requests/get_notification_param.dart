@@ -24,8 +24,8 @@ class GetNotificationParam extends GetParam {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       if (userId != null) 'userId': userId,
-      if (dateFrom != null) 'dateFrom': dateFrom?.toIso8601String(),
-      if (dateTo != null) 'dateTo': dateTo?.toIso8601String(),
+      if (dateFrom != null) 'dateFrom': dateFrom?.toUtc().toIso8601String(),
+      if (dateTo != null) 'dateTo': dateTo?.toUtc().toIso8601String(),
       ...super.toMap(),
     };
   }
