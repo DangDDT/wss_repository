@@ -1,7 +1,13 @@
 import 'package:wss_repository/requests/get_param.dart';
 
 class GetPartnerPaymentHistoryParam extends GetParam {
+  final DateTime? fromDate;
+  final DateTime? toDate;
+  final List<String>? status;
   GetPartnerPaymentHistoryParam({
+    required this.fromDate,
+    required this.toDate,
+    required this.status,
     required super.page,
     required super.pageSize,
     required super.sortKey,
@@ -18,6 +24,9 @@ class GetPartnerPaymentHistoryParam extends GetParam {
   @override
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      if (fromDate != null) 'fromDate': fromDate?.toIso8601String(),
+      if (toDate != null) 'toDate': toDate?.toIso8601String(),
+      if (status != null) 'status': status,
       ...super.toMap(),
     };
   }
